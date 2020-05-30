@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# from quay.io/rshop/npm-alpine
+
+if [ "$1" = "pull" ]; then
+  podman pull rshop/npm-alpine
+fi
+
+podman run --net host -v $HOME:$HOME -e HOME="$HOME" -w$(pwd) -it 147a npm "$@"
+

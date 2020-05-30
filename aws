@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# from quay.io/checkpoint/alpine-awscli
+
+if [ "$1" = "pull" ]; then
+  podman pull checkpoint/alpine-awscli
+fi
+
+podman run --net host -v $HOME:$HOME -e HOME="$HOME" -w$(pwd) -it af09 aws "$@"
+
